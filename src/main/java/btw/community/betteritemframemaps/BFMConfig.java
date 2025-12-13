@@ -40,19 +40,13 @@ public class BFMConfig {
                 }
                 saveConfig(defaultRotation, defaultDebug);
             }
-
             try (FileInputStream fis = new FileInputStream(configFile)) {
                 props.load(fis);
             }
-
             enableRotation = Boolean.parseBoolean(props.getProperty("enableRotation", String.valueOf(defaultRotation)));
             enableDebugLogs = Boolean.parseBoolean(props.getProperty("enableDebugLogs", String.valueOf(defaultDebug)));
-
-            saveConfig(enableRotation, enableDebugLogs);
-
         } catch (IOException e) {
-            AddonHandler.logMessage("BetterItemFrameMaps: Failed to load config! Using defaults.");
-            e.printStackTrace();
+            AddonHandler.logMessage("BetterItemFrameMaps: Failed to load config! Using defaults. Error: " + e.getMessage());
             enableRotation = defaultRotation;
             enableDebugLogs = defaultDebug;
         }
@@ -66,8 +60,7 @@ public class BFMConfig {
         try (FileOutputStream fos = new FileOutputStream(configFile)) {
             props.store(fos, "Better Item Frame Maps Configuration");
         } catch (IOException e) {
-            AddonHandler.logMessage("BetterItemFrameMaps: Failed to save config!");
-            e.printStackTrace();
+            AddonHandler.logMessage("BetterItemFrameMaps: Failed to save config! Error: " + e.getMessage());
         }
     }
 
