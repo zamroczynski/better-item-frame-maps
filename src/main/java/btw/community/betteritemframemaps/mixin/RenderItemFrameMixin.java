@@ -37,10 +37,14 @@ public class RenderItemFrameMixin {
         if (stack != null && stack.itemID == Item.map.itemID) {
             ci.cancel();
 
-            MapData mapData = ((ItemMap) stack.getItem()).getMapData(stack, entity.worldObj);
+            if (stack.getItem() instanceof ItemMap) {
+                MapData mapData = ((ItemMap) stack.getItem()).getMapData(stack, entity.worldObj);
 
-            if (mapData != null) {
-                this.renderSeamlessMap(entity, mapData);
+                if (mapData != null) {
+                    this.renderSeamlessMap(entity, mapData);
+                } else {
+                    BFMConfig.debug("Missing MapData for Item Frame EntityID: " + entity.entityId);
+                }
             }
         }
     }
@@ -52,7 +56,6 @@ public class RenderItemFrameMixin {
         GL11.glPushMatrix();
 
         GL11.glRotatef(entity.rotationYaw, 0.0F, 1.0F, 0.0F);
-
         GL11.glTranslatef(0.0F, 0.0F, WALL_OFFSET);
 
         if (BFMConfig.enableRotation) {
@@ -60,17 +63,18 @@ public class RenderItemFrameMixin {
         }
 
         GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
-
         GL11.glScalef(MAP_SCALE, MAP_SCALE, MAP_SCALE);
-
         GL11.glTranslatef(MAP_CENTER_OFFSET, MAP_CENTER_OFFSET, 0.0F);
 
-        if (RenderManager.instance.itemRenderer.mapItemRenderer != null) {
-            RenderManager.instance.itemRenderer.mapItemRenderer.renderMap(
+        RenderManager rm = RenderManager.instance;
+        if (rm != null && rm.itemRenderer != null && rm.itemRenderer.mapItemRenderer != null && rm.renderEngine != null) {
+            rm.itemRenderer.mapItemRenderer.renderMap(
                     null,
-                    RenderManager.instance.renderEngine,
+                    rm.renderEngine,
                     mapData
             );
+        } else {
+            BFMConfig.debug("Critical: RenderManager or sub-components are null. Cannot render map.");
         }
 
         GL11.glPopMatrix();
