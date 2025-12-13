@@ -18,7 +18,7 @@ The mod generates a configuration file at `.minecraft/config/BetterItemFrameMaps
 *   **enableDebugLogs** (default: `true`)
     *   Enables logs.
 
-### [Downloads](#)
+### [Downloads](https://github.com/zamroczynski/better-item-frame-maps/releases)
 
 ### Installation
 Place the downloaded `.jar` file into your `.minecraft/mods` folder.
@@ -43,7 +43,7 @@ Modyfikacja generuje plik konfiguracyjny w `.minecraft/config/BetterItemFrameMap
 *   **enableDebugLogs** (domyślnie: `true`)
     *   Włącza logi.
 
-### [Pobieranie](#)
+### [Pobieranie](https://github.com/zamroczynski/better-item-frame-maps/releases)
 
 ### Instalacja
 Umieść pobrany plik `.jar` w swoim folderze `.minecraft/mods`.
