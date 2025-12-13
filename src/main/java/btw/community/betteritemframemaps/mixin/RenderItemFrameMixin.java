@@ -47,7 +47,7 @@ public class RenderItemFrameMixin {
 
         GL11.glTranslatef(0.0F, 0.0F, 0.495F);
 
-        if (BFMConfig.getInstance().enableRotation) {
+        if (BFMConfig.enableRotation) {
             GL11.glRotatef((float)(-90 * entity.getRotation()), 0.0F, 0.0F, 1.0F);
         }
 

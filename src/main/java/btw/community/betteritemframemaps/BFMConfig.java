@@ -10,13 +10,13 @@ import java.util.Properties;
 public class BFMConfig {
     private static BFMConfig instance;
 
-    public boolean enableRotation;
-    public boolean enableDebugLogs;
+    public static boolean enableRotation;
+    public static boolean enableDebugLogs;
 
     private final File configFile;
 
     private BFMConfig() {
-        this.configFile = new File("config", "betteritemframemaps.properties");
+        this.configFile = new File("config", "BetterItemFrameMaps.properties");
         this.loadConfig();
     }
 
@@ -45,16 +45,16 @@ public class BFMConfig {
                 props.load(fis);
             }
 
-            this.enableRotation = Boolean.parseBoolean(props.getProperty("enableRotation", String.valueOf(defaultRotation)));
-            this.enableDebugLogs = Boolean.parseBoolean(props.getProperty("enableDebugLogs", String.valueOf(defaultDebug)));
+            enableRotation = Boolean.parseBoolean(props.getProperty("enableRotation", String.valueOf(defaultRotation)));
+            enableDebugLogs = Boolean.parseBoolean(props.getProperty("enableDebugLogs", String.valueOf(defaultDebug)));
 
-            saveConfig(this.enableRotation, this.enableDebugLogs);
+            saveConfig(enableRotation, enableDebugLogs);
 
         } catch (IOException e) {
             AddonHandler.logMessage("BetterItemFrameMaps: Failed to load config! Using defaults.");
             e.printStackTrace();
-            this.enableRotation = defaultRotation;
-            this.enableDebugLogs = defaultDebug;
+            enableRotation = defaultRotation;
+            enableDebugLogs = defaultDebug;
         }
     }
 
@@ -71,13 +71,13 @@ public class BFMConfig {
         }
     }
 
-    public void debug(String message) {
-        if (this.enableDebugLogs) {
+    public static void debug(String message) {
+        if (enableDebugLogs) {
             AddonHandler.logMessage("[BFM Debug] " + message);
         }
     }
 
-    public void log(String message) {
+    public static void log(String message) {
         AddonHandler.logMessage("[BFM] " + message);
     }
 }

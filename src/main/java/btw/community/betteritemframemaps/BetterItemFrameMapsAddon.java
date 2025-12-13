@@ -12,10 +12,11 @@ public class BetterItemFrameMapsAddon extends BTWAddon {
 
     @Override
     public void initialize() {
-        BFMConfig config = BFMConfig.getInstance();
-        config.log("Initializing Version " + this.getVersionString() + "...");
-        config.log("Rotation Enabled: " + config.enableRotation);
-        config.log("Debug Logs Enabled: " + config.enableDebugLogs);
+        BFMConfig.getInstance();
+
+        BFMConfig.log("Initializing Version " + this.getVersionString() + "...");
+        BFMConfig.log("Rotation Enabled: " + BFMConfig.enableRotation);
+        BFMConfig.log("Debug Logs Enabled: " + BFMConfig.enableDebugLogs);
     }
 
     public static BetterItemFrameMapsAddon getInstance() {
