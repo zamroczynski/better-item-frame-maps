@@ -1,6 +1,6 @@
 package btw.community.betteritemframemaps.mixin;
 
-import btw.community.betteritemframemaps.BFMConfig;
+import btw.community.betteritemframemaps.BetterItemFrameMapsAddon;
 import net.minecraft.src.*;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
@@ -43,7 +43,7 @@ public class RenderItemFrameMixin {
                 if (mapData != null) {
                     this.renderSeamlessMap(entity, mapData);
                 } else {
-                    BFMConfig.debug("Missing MapData for Item Frame EntityID: " + entity.entityId);
+                    BetterItemFrameMapsAddon.debug("Missing MapData for Item Frame EntityID: " + entity.entityId);
                 }
             }
         }
@@ -58,7 +58,7 @@ public class RenderItemFrameMixin {
         GL11.glRotatef(entity.rotationYaw, 0.0F, 1.0F, 0.0F);
         GL11.glTranslatef(0.0F, 0.0F, WALL_OFFSET);
 
-        if (BFMConfig.enableRotation) {
+        if (BetterItemFrameMapsAddon.enableRotation) {
             GL11.glRotatef((float)(-90 * entity.getRotation()), 0.0F, 0.0F, 1.0F);
         }
 
@@ -74,7 +74,7 @@ public class RenderItemFrameMixin {
                     mapData
             );
         } else {
-            BFMConfig.debug("Critical: RenderManager or sub-components are null. Cannot render map.");
+            BetterItemFrameMapsAddon.debug("Critical: RenderManager or sub-components are null. Cannot render map.");
         }
 
         GL11.glPopMatrix();
