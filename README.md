@@ -2,7 +2,7 @@
 
 ## English
 
-Better Item Frame Maps improves how maps are rendered inside Item Frames.
+Better Item Frame Maps is an addon for Better Than Wolves Community Edition 3.0.0 (Minecraft 1.6.4). It significantly improves how maps are rendered inside Item Frames.
 
 ### Features
 *   **Seamless Maps:** Maps displayed in Item Frames cover the full block face (1x1).
@@ -27,7 +27,7 @@ Place the downloaded `.jar` file into your `.minecraft/mods` folder.
 
 ## Polski
 
-Better Item Frame Maps zmienia sposób renderowania map wewnątrz ramek na przedmioty (Item Frames).
+Better Item Frame Maps to addon do modyfikacji Better Than Wolves Community Edition 3.0.0 (Minecraft 1.6.4). W znaczący sposób ulepsza on renderowanie map umieszczonych w ramkach na przedmioty.
 
 ### Funkcje
 *   **Pełny rozmiar:** Mapy w ramkach zajmują całą powierzchnię bloku (1x1).
