@@ -15,7 +15,7 @@ The mod generates a configuration file at `.minecraft/config/BetterItemFrameMaps
 *   **enableRotation** (default: `true`)
     *   `true`: You can rotate the map by right-clicking the Item Frame.
     *   `false`: Maps are locked in a fixed "North-up" orientation.
-*   **enableDebugLogs** (default: `true`)
+*   **enableDebugLogs** (default: `false`)
     *   Enables logs.
 
 ### [Downloads](https://github.com/zamroczynski/better-item-frame-maps/releases)
@@ -40,7 +40,7 @@ Modyfikacja generuje plik konfiguracyjny w `.minecraft/config/BetterItemFrameMap
 *   **enableRotation** (domyślnie: `true`)
     *   `true`: Można obracać mapę klikając prawym przyciskiem myszy na ramkę.
     *   `false`: Mapy są zablokowane w stałej pozycji (północ na górze).
-*   **enableDebugLogs** (domyślnie: `true`)
+*   **enableDebugLogs** (domyślnie: `false`)
     *   Włącza logi.
 
 ### [Pobieranie](https://github.com/zamroczynski/better-item-frame-maps/releases)
