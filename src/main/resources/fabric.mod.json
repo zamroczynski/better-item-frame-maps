@@ -23,7 +23,7 @@
     "betteritemframemaps.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.19",
+    "fabricloader": ">=0.18.0",
     "minecraft": "1.6.4"
   }
 }
