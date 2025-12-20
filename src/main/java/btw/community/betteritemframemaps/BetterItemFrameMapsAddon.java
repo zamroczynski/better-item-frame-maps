@@ -1,8 +1,8 @@
 package btw.community.betteritemframemaps;
 
-import btw.AddonHandler;
-import btw.BTWAddon;
-import java.util.Map;
+import api.AddonHandler;
+import api.BTWAddon;
+import api.config.AddonConfig;
 
 public class BetterItemFrameMapsAddon extends BTWAddon {
     private static BetterItemFrameMapsAddon instance;
@@ -17,22 +17,34 @@ public class BetterItemFrameMapsAddon extends BTWAddon {
 
     @Override
     public void preInitialize() {
-        registerProperty("enableRotation", "true", "True: You can rotate the map by right-clicking. False: Fixed North-up orientation.");
-        registerProperty("enableDebugLogs", "true", "Enables debug messages in console.");
+        super.preInitialize();
     }
 
     @Override
     public void initialize() {
         AddonHandler.logMessage(this.getName() + " Version " + this.getVersionString() + " Initializing...");
+        log("Initialization started. Checking config values...");
+        log("Config - Rotation Enabled: " + enableRotation);
+        log("Config - Debug Logs Enabled: " + enableDebugLogs);
     }
 
     @Override
-    public void handleConfigProperties(Map<String, String> propertyValues) {
-        enableRotation = Boolean.parseBoolean(propertyValues.get("enableRotation"));
-        enableDebugLogs = Boolean.parseBoolean(propertyValues.get("enableDebugLogs"));
+    public void registerConfigProperties(AddonConfig config) {
+        config.registerBoolean("enableRotation", true,
+                "True: You can rotate the map by right-clicking.",
+                "False: Fixed North-up orientation.");
 
-        log("Rotation Enabled: " + enableRotation);
-        log("Debug Logs Enabled: " + enableDebugLogs);
+        config.registerBoolean("enableDebugLogs", false,
+                "Enables verbose debug messages in console.",
+                "Warning: This may spam the console if many Item Frames are visible.");
+    }
+
+    @Override
+    public void handleConfigProperties(AddonConfig config) {
+        enableRotation = config.getBoolean("enableRotation");
+        enableDebugLogs = config.getBoolean("enableDebugLogs");
+
+        System.out.println("[BFM] Config loaded. Rotation: " + enableRotation + ", Debug: " + enableDebugLogs);
     }
 
     public static BetterItemFrameMapsAddon getInstance() {
@@ -41,6 +53,10 @@ public class BetterItemFrameMapsAddon extends BTWAddon {
 
     public static void log(String message) {
         AddonHandler.logMessage("[BFM] " + message);
+    }
+
+    public static void logWarning(String message) {
+        AddonHandler.logWarning("[BFM WARN] " + message);
     }
 
     public static void debug(String message) {
